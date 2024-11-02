@@ -2,9 +2,10 @@ provider "aws" {
   region = "eu-north-1"
 }
 
-# module "test_iam_role" {
-#   source = "./modules/Iam_role"
-# }
+module "test_iam_role" {
+  source    = "./modules/Iam_role"
+  role_name = "functionRole"
+}
 
 
 # module "dynamodb" {
