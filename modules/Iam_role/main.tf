@@ -10,9 +10,7 @@ data "aws_iam_policy_document" "polices" {
       "logs:PutMetricFilter",
       "logs:PutRetentionPolicy"
     ]
-    resources = [
-      ["*"]
-    ]
+    resources = ["*"]
   }
 
   statement {
@@ -20,7 +18,7 @@ data "aws_iam_policy_document" "polices" {
     actions = [
       "sns:Publish"
     ]
-    resources = "arn:aws:sns:*:*:*"
+    resources = ["arn:aws:sns:*:*:*"]
   }
 
   statement {
@@ -84,7 +82,7 @@ data "aws_iam_policy_document" "polices" {
       "kinesis:DescribeStream",
       "kinesis:DescribeStreamSummary"
     ]
-    resources = "*"
+    resources = ["*"]
 
   }
 }
