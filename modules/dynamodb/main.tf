@@ -32,30 +32,27 @@ resource "aws_dynamodb_table_item" "user_item_1" {
   table_name = aws_dynamodb_table.users.name
   hash_key   = "userId"
   item = jsonencode({
-    "userId" : "user123",
-    "userName" : "Luke Skywalker",
-    "email" : "usetheforceluke@example.com"
+    "userId"   = { "S" = "user123" },
+    "userName" = { "S" = "Luke Skywalker" },
+    "email"    = { "S" = "usetheforceluke@example.com" }
   })
 }
-
-# Item 2
 resource "aws_dynamodb_table_item" "user_item_2" {
   table_name = aws_dynamodb_table.users.name
   hash_key   = "userId"
   item = jsonencode({
-    "userId" : "user456",
-    "userName" : "Leia Organa",
-    "email" : "princessleia@example.com"
+    "userId"   = { "S" = "user456" },
+    "userName" = { "S" = "Leia Organa" },
+    "email"    = { "S" = "princessleia@example.com" }
   })
 }
-
-# Item 3
 resource "aws_dynamodb_table_item" "user_item_3" {
   table_name = aws_dynamodb_table.users.name
   hash_key   = "userId"
   item = jsonencode({
-    "userId" : "user789",
-    "userName" : "Han Solo",
-    "email" : "hansolo@example.com"
+    "userId"   = { "S" = "user789" },
+    "userName" = { "S" = "Han Solo" },
+    "email"    = { "S" = "hansolo@example.com" }
   })
 }
+
