@@ -4,7 +4,7 @@ provider "aws" {
 
 module "test_iam_role" {
   source    = "./modules/Iam_role"
-  role_name = "functionRole"
+  role_name = "lambdaFunctionRole"
 }
 
 
