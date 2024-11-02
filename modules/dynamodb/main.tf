@@ -7,6 +7,10 @@ resource "aws_dynamodb_table" "users" {
     name = "userId"
     type = "S"
   }
+  attribute {
+    name = "email" # Define email as an attribute to match the GSI
+    type = "S"
+  }
 
   global_secondary_index {
     name     = "user_email_index" # Name for your GSI
