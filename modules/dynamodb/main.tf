@@ -63,7 +63,7 @@ resource "aws_dynamodb_table_item" "user_item_3" {
 resource "aws_dynamodb_table_item" "user_item_4" {
   table_name = aws_dynamodb_table.users.name
   hash_key   = "userId"
-  item = jsondecode({
+  item = jsonencode({
     "userId"   = { "S" = "user987" },
     "userName" = { "S" = "Akalanka Maldeniya" }
     "email"    = { "S" = "my@gmail.com" }
