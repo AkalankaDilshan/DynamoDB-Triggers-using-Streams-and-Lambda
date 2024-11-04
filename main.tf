@@ -19,5 +19,5 @@ module "sns" {
 
 module "lambda_function" {
   source   = "./modules/lambda"
-  role_arn = module.Iam_role.function_role_arn
+  role_arn = "module.Iam_role.function_role_arn"
 }
