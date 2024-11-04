@@ -1,7 +1,7 @@
 variable "topic_name" {
   description = "name for sns topic"
   type        = string
-  default     = "sns_topic"
+  default     = "User_table_sns"
 }
 
 variable "email_address" {
