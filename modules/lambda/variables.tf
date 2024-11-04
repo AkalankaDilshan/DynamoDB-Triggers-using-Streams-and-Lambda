@@ -9,3 +9,8 @@ variable "role_arn" {
   description = "Iam role arn"
   type        = string
 }
+
+variable "source_arn" {
+  description = "database source arn"
+  type        = string
+}

@@ -11,7 +11,8 @@ resource "aws_lambda_function" "dynamodb_trigger_lambda" {
 
 # DynamoDB Stream Trigger for Lambda
 resource "aws_lambda_event_source_mapping" "dynamodb_trigger" {
-  event_source_arn  = aws_dynamodb_table.users.stream_arn
+  //event_source_arn  = aws_dynamodb_table.users.stream_arn
+  event_source_arn  = var.source_arn
   function_name     = aws_lambda_function.dynamodb_trigger_lambda.arn
   starting_position = "LATEST"
 }

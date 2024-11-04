@@ -18,6 +18,7 @@ module "sns" {
 }
 
 module "lambda_function" {
-  source   = "./modules/lambda"
-  role_arn = "module.Iam_role.function_role_arn"
+  source     = "./modules/lambda"
+  role_arn   = "module.Iam_role.function_role_arn"
+  source_arn = "module.dynamodb.event_source_arn"
 }
