@@ -2,7 +2,7 @@ provider "aws" {
   region = "eu-north-1"
 }
 
-module "test_iam_role" {
+module "Iam_role" {
   source    = "./modules/Iam_role"
   role_name = "lambdaFunctionRole"
 }
@@ -19,6 +19,6 @@ module "sns" {
 
 module "lambda_function" {
   source     = "./modules/lambda"
-  role_arn   = "module.Iam_role.function_role_arn"
-  source_arn = "module.dynamodb.event_source_arn"
+  role_arn   = module.Iam_role.function_role_arn
+  source_arn = module.dynamodb.event_source_arn
 }
