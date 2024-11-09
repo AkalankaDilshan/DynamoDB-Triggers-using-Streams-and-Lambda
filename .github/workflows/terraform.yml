@@ -92,10 +92,10 @@ jobs:
 
         # On push to "main", build or change infrastructure according to Terraform configuration files
         # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve
 
-        # Pull Terraform state from the cloud backend
+      # Pull Terraform state from the cloud backend
       - name: Export Terraform State
         run: terraform state pull > terraform.tfstate
 
@@ -105,3 +105,21 @@ jobs:
         with:
           name: terraform-state
           path: terraform.tfstate
+
+      # Install Python and Diagrams for architecture visualization
+      - name: Setup Python and Install Diagrams
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip install diagrams
+
+      # Generate architecture diagram using terraform graph and diagrams
+      - name: Generate Architecture Diagram
+        run: terraform graph | diagrams --terraform -o graph.png
+
+      # Upload generated architecture diagram as an artifact
+      - name: Upload Architecture Diagram
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-diagram
+          path: graph.png
