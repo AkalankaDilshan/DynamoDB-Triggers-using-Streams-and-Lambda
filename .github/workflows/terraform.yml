@@ -94,3 +94,14 @@ jobs:
         # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
       - name: Terraform Apply
         run: terraform apply -auto-approve
+
+        # Pull Terraform state from the cloud backend
+      - name: Export Terraform State
+        run: terraform state pull > terraform.tfstate
+
+      # Upload Terraform state file as an artifact for manual diagramming
+      - name: Upload State as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-state
+          path: terraform.tfstate
