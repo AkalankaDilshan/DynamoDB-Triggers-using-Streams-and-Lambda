@@ -53,7 +53,8 @@ jobs:
       # Generate Terraform Graph in DOT format
       - name: Generate Terraform Graph
         run: |
-          terraform graph | dot -Tpng -o graph.png
+          terraform graph -draw-cycles > graph.dot
+          dot -Tpng graph.dot -o graph.png
           echo "Terraform graph generated: graph.png"
 
       # Upload the graph as an artifact
