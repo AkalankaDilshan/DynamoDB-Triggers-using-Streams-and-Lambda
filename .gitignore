@@ -41,3 +41,6 @@ terraform.rc
 
 #Ignore my res img file
 architecture.jpg
+
+#Ignore res file
+res/*
